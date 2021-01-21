@@ -1,0 +1,30 @@
+body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: auto;
+    margin-top: 10%;
+    margin-bottom: 10%;
+}
+.mainDiv{
+    background-color:white;
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    margin: auto;
+    align-items: center; 
+}
+.inputs{
+    display: flex;
+    flex-direction: column;
+    align-content:space-between;
+}
+
+input{
+    margin-bottom: 10%;
+}
+
+button{
+    margin-top: 1%;
+    margin-bottom: 5%;
+}
