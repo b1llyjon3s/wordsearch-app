@@ -1,5 +1,5 @@
 *{
-    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 body{
@@ -47,10 +47,10 @@ td{
 
 td.selected{
     color: rgb(21, 172, 41);
-    
+    background-color: aquamarine;
+    border-radius: 70%;    
 }
 
 section{
-    margin-top: 2%;
-
+    margin:auto;
 }

@@ -3,6 +3,7 @@ export class Grid{
         // get the reference for the gridArea
         var gridArea = document.getElementById("grid-area");
         var foundArea = document.getElementById("found-words");
+        var mdiv = document.getElementById("mdiv");
 
         var tbl = document.createElement("table");
         var tblBody = document.createElement("tbody");
@@ -86,7 +87,6 @@ export class Grid{
                                 break;
                         }
                     }
-                    
                     if(validSelect){
                         event.target.classList.add('selected');
                         selectedItems.push({
@@ -101,13 +101,22 @@ export class Grid{
         gridArea.addEventListener('mouseup', function (event) {
             wordSelectMode = false;
             let selectedWord = stringify(selectedItems);
-            if (words.includes(selectedWord))
+            if (words.includes(selectedWord)){
                 if(!foundWords.includes(selectedWord)){
                     var para = document.createElement("p");
                     //var text = document.createTextNode(selectedWord);
                     para.innerHTML = selectedWord;
                     foundArea.appendChild(para);
+                    // console.log(selectedWord)
+                    // console.log(foundWords)
                     foundWords.push(selectedWord);
+                }
+            }
+            if(foundWords.length == words.length){
+                var para = document.createElement("p");
+                //var text = document.createTextNode(selectedWord);
+                para.innerHTML = "Well done, you got lucky!.";
+                mdiv.appendChild(para);
             }
             selectedItems.forEach(item => item.cell.classList.remove('selected'));
             validSelect = true;
