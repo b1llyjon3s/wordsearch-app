@@ -13,15 +13,20 @@
 </head>
 
 <body>
-    <h1>Word Search Game</h1>
-    <div class="mainDiv">
-        <div class="inputs">
-            <input type="text" name="words-input" id="words-input" placeholder="Enter words" >
-            <input type="text" name="gridSize-input" id="gridSize-input" placeholder="Enter grid size">
+    <main>
+        <h1>Word Search Game</h1>
+        <div class="mainDiv">
+            <div class="inputs">
+                <input type="text" name="words-input" id="words-input" placeholder="Enter words">
+                <input type="text" name="gridSize-input" id="gridSize-input" placeholder="Enter grid size">
+            </div>
+            <button class="submit"> Generate Grid </button>
+            <section id="grid-area"></section>
+            <h2>Found Words</h2>
+            <section id="found-words"></section>
         </div>
-        <button class="submit"> Generate Grid </button>
-        <section id="grid-area"></section>
-    </div>
+    </main>
+    
 </body>
 <script type="module" src="js/index.js"></script>
 </html>

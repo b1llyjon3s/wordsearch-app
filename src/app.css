@@ -1,3 +1,7 @@
+*{
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
 body{
     display: flex;
     flex-direction: column;
@@ -7,10 +11,9 @@ body{
     margin-bottom: 10%;
 }
 .mainDiv{
-    background-color:white;
     display: flex;
     flex-direction: column;
-    width: 80%;
+    width: 100%;
     margin: auto;
     align-items: center; 
 }
@@ -27,4 +30,27 @@ input{
 button{
     margin-top: 1%;
     margin-bottom: 5%;
+} 
+main{
+    width: 80%;
+    text-align: center;
+}
+table{
+    user-select: none;
+    margin: auto;
+    max-width: 100%;
+}
+td{
+    width: 20px;
+    height: 15px;
+}
+
+td.selected{
+    color: rgb(21, 172, 41);
+    
+}
+
+section{
+    margin-top: 2%;
+
 }

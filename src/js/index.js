@@ -9,15 +9,22 @@ const grid = new Grid();
 
 
 submitBtn.addEventListener("click", async () => {
-    gridArea.innerHTML = "";
-    let words = wordsInput.value.split(",");
+    let words = wordsInput.value.toUpperCase().split(",");
     let gridSize = gridSizeInput.value;
-    if(gridSize && words.length){
+    //gridArea.innerHTML = "";
+    if (gridSize && words.length) {
+        //remove older grids
+        if (gridArea.childElementCount) {
+            gridArea.removeChild(gridArea.lastChild);
+        }
         let result = await fetchGridInfo(gridSize,words);
-        grid.renderGrid(gridSize, result);
+        grid.renderGrid(gridSize, result,words);
+        // wordsInput.value = "";
+        // gridSizeInput.value = "";
     }
-    wordsInput.value = "";
-    gridSizeInput.value = "";
+    else
+        alert("enter size/words")
+    
 })
 
 
