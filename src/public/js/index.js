@@ -34,8 +34,8 @@ submitBtn.addEventListener("click", async () => {
 
 async function fetchGridInfo(gridSize,wordList){
     const commaSeparatedWords = wordList.join(",");
-    const url = `https://bilal-wordsearch-app.herokuapp.com/wordgrid?gridSize=${gridSize}&words=${commaSeparatedWords}`;
-    //const url = `http://localhost:8080/wordgrid?gridSize=${gridSize}&words=${commaSeparatedWords}`;
+    //const url = `https://bilal-wordsearch-app.herokuapp.com/wordgrid?gridSize=${gridSize}&words=${commaSeparatedWords}`;
+    const url = `http://localhost:8080/wordgrid?gridSize=${gridSize}&words=${commaSeparatedWords}`;
     let response = await fetch(url);
     let result = await response.text();
     return result.split("\r\n");
