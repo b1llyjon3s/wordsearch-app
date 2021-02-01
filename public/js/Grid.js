@@ -3,7 +3,7 @@ export class Grid{
         // get the reference for the gridArea
         var gridArea = document.getElementById("grid-area");
         var foundArea = document.getElementById("found-words");
-        var mdiv = document.getElementById("mdiv");
+        var para = document.getElementById("para");
 
         var tbl = document.createElement("table");
         var tblBody = document.createElement("tbody");
@@ -56,6 +56,8 @@ export class Grid{
                         if(lastSelectedItem.x === currentItem.x && lastSelectedItem.y === currentItem.y) return;
                         if (selectedItems.length == 1) {
                             direction = getDirection(lastSelectedItem,currentItem);
+                            // console.log("X" + currentItem.x + " Y" + currentItem.y + " \nXL" + lastSelectedItem.x + " YL" + lastSelectedItem.y)
+                            // console.log(direction);
                         }
                         switch (direction) {
                             case 'HORIZONTAL':
@@ -82,6 +84,14 @@ export class Grid{
                                 if (currentItem.y == (parseInt(lastSelectedItem.y) - 1) && currentItem.x == (parseInt(lastSelectedItem.x) - 1))
                                     validSelect = true;
                                 break;
+                            case 'DIAGONAL_D':
+                                if (currentItem.y == (parseInt(lastSelectedItem.y) + 1) && currentItem.x == (parseInt(lastSelectedItem.x) - 1))
+                                    validSelect = true;
+                                break;
+                            case 'I_DIAGONAL_D':
+                                if (currentItem.y == (parseInt(lastSelectedItem.y) - 1) && currentItem.x == (parseInt(lastSelectedItem.x) + 1))
+                                    validSelect = true;
+                                break;
 
                             default:
                                 break;
@@ -100,25 +110,24 @@ export class Grid{
         //mouse-up
         gridArea.addEventListener('mouseup', function (event) {
             wordSelectMode = false;
-            let selectedWord = stringify(selectedItems);
-            if (words.includes(selectedWord)){
-                if(!foundWords.includes(selectedWord)){
-                    var para = document.createElement("p");
-                    //var text = document.createTextNode(selectedWord);
-                    para.innerHTML = selectedWord;
-                    foundArea.appendChild(para);
-                    // console.log(selectedWord)
-                    // console.log(foundWords)
-                    foundWords.push(selectedWord);
+            let lastWordFound = ''
+            let selectedWord = stringify(selectedItems)
+
+            if(foundWords.length){
+                lastWordFound = foundWords[foundWords.length - 1];
+                if (lastWordFound === selectedWord)
+                    return;
+            }
+                
+            if (words.includes(selectedWord) && !foundWords.includes(selectedWord)){
+                foundWords.push(selectedWord);
+                //check if all the words have been found
+                if(foundWords.length == words.length){
+                    para.innerHTML = "Well done, you got lucky!";
+                    foundWords = [];
                 }
-            }
-            if(foundWords.length == words.length){
-                var para = document.createElement("p");
-                //var text = document.createTextNode(selectedWord);
-                para.innerHTML = "Well done, you got lucky!.";
-                mdiv.appendChild(para);
-            }
-            selectedItems.forEach(item => item.cell.classList.remove('selected'));
+            }else
+                selectedItems.forEach(item => item.cell.classList.remove('selected'));
             validSelect = true;
             selectedItems = [];
         })
@@ -128,6 +137,8 @@ export class Grid{
                 return "HORIZONTAL";
             else if (currentItem.y == lastSelectedItem.y && currentItem.x == (parseInt(lastSelectedItem.x) + 1))
                 return "VERTICAL";
+            else if (currentItem.y == (parseInt(lastSelectedItem.y) + 1) && currentItem.x == (parseInt(lastSelectedItem.x) - 1))
+                return "DIAGONAL_D";
             else if (currentItem.y == (parseInt(lastSelectedItem.y) + 1) && currentItem.x == (parseInt(lastSelectedItem.x) + 1))
                 return "DIAGONAL";
             else if (currentItem.x == lastSelectedItem.x && currentItem.y == (parseInt(lastSelectedItem.y) - 1))
@@ -136,6 +147,8 @@ export class Grid{
                 return "I_VERTICAL";
             else if (currentItem.y == (parseInt(lastSelectedItem.y) - 1) && currentItem.x == (parseInt(lastSelectedItem.x) - 1))
                 return "I_DIAGONAL";
+            else if (currentItem.y == (parseInt(lastSelectedItem.y) - 1) && currentItem.x == (parseInt(lastSelectedItem.x) + 1))
+                return "I_DIAGONAL_D";
         }
         let stringify = (selectedItems) => {
             let itemStr = '';

@@ -43,6 +43,7 @@ table{
 td{
     width: 20px;
     height: 15px;
+    margin: 5px;
 }
 
 td.selected{

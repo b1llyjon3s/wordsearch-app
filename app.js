@@ -1,11 +1,12 @@
-const express = requires('express');
+const express = require('express');
 let dotenv = require('dotenv');
 let app = express();
-
+dotenv.config();
 app.use(express.static('public'));
 
 app.get('/',function(req,res){
-    res.sendFile('./public/index.html');
+    res.sendFile('index.html');
+    console.log("works")
 });
 
 app.listen(process.env.PORT);
