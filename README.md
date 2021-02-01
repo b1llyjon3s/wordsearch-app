@@ -1,4 +1,4 @@
-# wordsearch-frontend
+# wordsearch-app
 A simple web app that uses the wordsearch-api to enable users to play an implementation of the popular word search game. 
 
 # How it works
