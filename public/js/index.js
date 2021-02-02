@@ -11,8 +11,10 @@ var para = document.getElementById("para");
 submitBtn.addEventListener("click", async () => {
     const grid = new Grid();
     let words = wordsInput.value.toUpperCase().split(",");
+    
     let gridSize = gridSizeInput.value;
-    //gridArea.innerHTML = "";
+    words = words.filter(sanitiseWords);
+
     if (gridSize && words.length) {
         //remove older grids
         if (gridArea.childElementCount) {
@@ -25,7 +27,7 @@ submitBtn.addEventListener("click", async () => {
         // gridSizeInput.value = "";
     }
     else
-        alert("enter size/words")
+        alert("Please enter none numeric words.\nAlso, the inputs cannot be empty.")
     
 })
 
@@ -37,4 +39,10 @@ async function fetchGridInfo(gridSize,wordList){
     let response = await fetch(url);
     let result = await response.text();
     return result.split("\r\n");
+}
+
+function sanitiseWords(word){
+    var patt = /[0-9]/;
+    if(!patt.test(word))
+        return word;
 }
