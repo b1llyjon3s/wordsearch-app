@@ -6,5 +6,5 @@ A java [spring boot API](https://github.com/b1llyjon3s/wordsearch-api) handles t
 
 The front-end javascript makes a call to this API (with the grid size and a list of words) and formats it as a table.
 
-# Try it
+# Try it out
 https://wordgrid-app.herokuapp.com/
