@@ -55,3 +55,6 @@ td.selected{
 section{
     margin:auto;
 }
+a{
+    text-decoration: none;
+}
