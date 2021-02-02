@@ -15,7 +15,7 @@ submitBtn.addEventListener("click", async () => {
     let gridSize = gridSizeInput.value;
     words = words.filter(sanitiseWords);
 
-    if (gridSize && words.length) {
+    if (gridSize >= 5 && words.length) {
         //remove older grids
         if (gridArea.childElementCount) {
             gridArea.removeChild(gridArea.lastChild);
@@ -27,7 +27,7 @@ submitBtn.addEventListener("click", async () => {
         // gridSizeInput.value = "";
     }
     else
-        alert("Please enter none numeric words.\nAlso, the inputs cannot be empty.")
+        alert("Please enter none numeric words.\nAlso, the inputs cannot be empty.\nThe gridsize must be atleast 5.")
     
 })
 
